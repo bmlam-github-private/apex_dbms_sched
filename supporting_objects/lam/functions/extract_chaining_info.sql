@@ -11,10 +11,14 @@ AS
 BEGIN 
 	FOR rec IN 
 	(
-		SELECT chain_name, owner, rule_name, condition, action
+		SELECT upper(chain_name) chain_name
+			, upper(owner) pi_chain_owner
+			, upper(rule_name) rule_name
+			, upper(condition) condition
+			, upper(action) action 
 		FROM all_scheduler_chain_rules
 		WHERE owner = pi_chain_owner
-		  AND chain_name = pi_chain_name
+		  AND upper(chain_name) = upper(pi_chain_name)
 		-- Oracle is not aware of order of steps or rules!
 	) LOOP
 		l_add_row := FALSE;
