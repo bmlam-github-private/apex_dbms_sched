@@ -1,5 +1,9 @@
 CREATE OR REPLACE PACKAGE pkg_sched_job AS
 
+PROCEDURE create_chain
+( chain_info_json VARCHAR2 
+);
+
 PROCEDURE create_job_using_stp 
 ( job_name VARCHAR2 DEFAULT NULL -- system can generated job name
  ,job_description VARCHAR2 DEFAULT NULL 
